@@ -11,9 +11,9 @@ set.seed(seed)
 
 cl <- makeCluster(parallel::detectCores())
 
-theta1 = 2
-theta2 = 7
-theta3 = 3
+theta1 = 1
+theta2 = 5
+theta3 = 0.2
 n = 50
 
 a = cumsum(rexp(n, theta3))
