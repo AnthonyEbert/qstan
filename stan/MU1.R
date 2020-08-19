@@ -27,9 +27,12 @@ fit <- stan(
   file = "stan/MU1.stan",
   model_name = "example",
   data = dat,
-  iter = 500,
+  iter = 50000,
   init = rep(list(list(x = a[-n], trans_last_x = exp(-theta3 * a[n]), theta1 = theta1, theta2 = theta2, theta3 = theta3)), parallel::detectCores()),
   chains = parallel::detectCores(),
   cores = parallel::detectCores(),
-  pars = c("theta1", "theta2", "theta3")
+  pars = c("theta1", "theta2", "theta3"),
+  control = list(max_treedepth = 15, adapt_delta = 0.99)
 )
+
+save(fit, file = "fit_NUTS.RData")
